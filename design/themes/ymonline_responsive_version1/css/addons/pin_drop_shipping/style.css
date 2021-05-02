@@ -1,0 +1,254 @@
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+    height: 100%;
+    width: 100%;
+
+}
+
+.map_parent {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+
+#pin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.controls {
+    font-size: 1em;
+    line-height: 1.5em;
+    margin: 50px auto;
+}
+
+.input_Small, .input_Large{
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    line-height: 1.8em;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -webkit-font-smoothing: subpixel-antialiased;
+    background-clip: padding-box;
+    border-radius: 5px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.9285714286em 0.9285714286em 0.257142857em 0.7857142857em;
+    border:1px #d9d9d9 solid;
+    margin: 5px;
+}
+
+
+
+.input_Small {
+}
+
+.input_Large {
+}
+
+
+.button_Normal {
+    cursor: pointer;
+    display: inline-block;
+    background-color: #008a00;
+    background-clip: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px transparent solid;
+    color: white;
+    font-weight: 500;
+    padding: 1em 1.7em;
+    text-align: center;
+    position: relative;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+
+}
+
+.button_NormalRemove {
+    cursor: pointer;
+    display: inline-block;
+    background-color: white;
+    background-clip: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0px transparent solid;
+    border-radius: 5px;
+    color: #737373;
+    font-weight: 500;
+    padding: 1em 1.7em;
+    text-align: center;
+    position: relative;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+    margin: -20px 0 0 0;
+
+}
+
+.button_Normal:hover {
+    background-color: #135E90;
+}
+
+/** float container */
+.locAppfloat-container {
+    position: relative;
+    /** active label */
+}
+.locAppfloat-container input {
+
+    outline: 0;
+    width: 100%;
+}
+.locAppfloat-container input:focus {
+    outline: none;
+    border-color: #197bbd;
+    box-shadow: 0 0 0 1px #197bbd;
+}
+.locAppfloat-container label {
+    font-size: 0.8571428571em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -webkit-font-smoothing: subpixel-antialiased;
+    margin: 0 5px 5px 15px;
+    position: absolute;
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-transform: translate(0, 14px) scale(1);
+    transform: translate(0, 14px) scale(1);
+    -webkit-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+    color: #737373
+}
+
+
+
+.locAppfloat-container.active label {
+    -webkit-transform: translate(0, 4px) scale(0.75);
+    transform: translate(0, 4px) scale(0.75);
+}
+
+/* The Modal (background) */
+.locApp-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.locApp-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+}
+
+/* The Close Button */
+.locApp-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin: -20px -10px;
+}
+
+.locApp-close:hover,
+.locApp-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.gmaps * {
+    visibility: visible;
+}
+
+
+
+
+
+
+.locApp-row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="locApp-col-"] {
+    float: left;
+    padding: 15px;
+}
+.locApp-aside {
+    background-color: #33b5e5;
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.locApp-footer {
+    background-color: #0099cc;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+}
+
+/* For mobile phones: */
+[class*="locApp-col-"] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .locApp-col-s-1 {width: 8.33%;}
+    .locApp-col-s-2 {width: 16.66%;}
+    .locApp-col-s-3 {width: 25%;}
+    .locApp-col-s-4 {width: 33.33%;}
+    .locApp-col-s-5 {width: 41.66%;}
+    .locApp-col-s-6 {width: 50%;}
+    .locApp-col-s-7 {width: 58.33%;}
+    .locApp-col-s-8 {width: 66.66%;}
+    .locApp-col-s-9 {width: 75%;}
+    .locApp-col-s-10 {width: 83.33%;}
+    .locApp-col-s-11 {width: 91.66%;}
+    .locApp-col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .locApp-col-1 {width: 8.33%;}
+    .locApp-col-2 {width: 16.66%;}
+    .locApp-col-3 {width: 25%;}
+    .locApp-col-4 {width: 33.33%;}
+    .locApp-col-5 {width: 41.66%;}
+    .locApp-col-6 {width: 50%;}
+    .locApp-col-7 {width: 58.33%;}
+    .locApp-col-8 {width: 66.66%;}
+    .locApp-col-9 {width: 75%;}
+    .locApp-col-10 {width: 83.33%;}
+    .locApp-col-11 {width: 91.66%;}
+    .locApp-col-12 {width: 100%;}
+}
+
+.locAppInputPickable{
+
+}
+
+
+
+
+
+

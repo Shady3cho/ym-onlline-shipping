@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>ym_shipping</id>
+    <name>YM-Online Shipping</name>
+    <description>A shipping addon for YM-Online</description>
+    <version>1.0</version>
+    <priority>100500</priority>
+    <status>active</status>
+    <queries>
+        <!--<item for="install">DROP TABLE IF EXISTS ?:ym_shipping_store_locations;</item>-->
+        <item for="install">
+            CREATE TABLE IF NOT EXISTS `?:ym_shipping_store_locations` (
+            `shipping_method_id` text NOT NULL DEFAULT '',
+            `shipping_rate_id` text NOT NULL DEFAULT '',
+            `latitude` double,
+            `longitude` double,
+            `zoom_latitude` double,
+            `zoom_longitude` double,
+            `zoom_level` double
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <!--<item for="uninstall">DROP TABLE IF EXISTS ?:ym_shipping_store_locations;</item>-->
+        <item for="install">
+            CREATE TABLE IF NOT EXISTS `?:ym_shipping_customer_data` (
+            `customer_id` mediumint(8),
+            `rate_area_city_id` mediumint(8),
+            `rate_area_id` mediumint(8),
+            `latitude` double,
+            `longitude` double,
+            `pickup_location_id` mediumint(8),
+            `is_pickup_from_location` mediumint(8)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item for="install">
+            CREATE TABLE IF NOT EXISTS `?:ym_shipping_order_data` (
+            `customer_id` mediumint(8),
+            `order_id` mediumint(8),
+            `rate_area_city_id` mediumint(8),
+            `rate_area_id` mediumint(8),
+            `latitude` double,
+            `longitude` double,
+            `pickup_location_id` mediumint(8),
+            `is_pickup_from_location` mediumint(8)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item for="install">
+            CREATE TABLE IF NOT EXISTS `?:ym_shipping_pick_up_location_data` (
+            `id` mediumint(8),
+            `city` text DEFAULT '',
+            `pickup_name` text DEFAULT '',
+            `fixed_rate` double
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+    </queries>
+    <settings>
+        <sections>
+            <section id="rate" name="Rate">
+                <items>
+                    <item id="ym_shipping_standard_distance">
+                        <name>Standard Distance (km)</name>
+                        <type>input</type>
+                        <default_value>20</default_value>
+                    </item>
+                    <item id="ym_shipping_rate_per_km">
+                        <name>Rate per km</name>
+                        <type>input</type>
+                        <default_value>1</default_value>
+                    </item>
+                    <item id="ym_shipping_standard_weight">
+                        <name>Standard Weight (kg)</name>
+                        <type>input</type>
+                        <default_value>50</default_value>
+                    </item>
+                    <item id="ym_shipping_volumetric_factor">
+                        <name>Volumetric Factor</name>
+                        <type>input</type>
+                        <default_value>3000</default_value>
+                    </item>
+                    <item id="ym_shipping_standard_volume">
+                        <name>Standard Volume (m3) in mm3</name>
+                        <type>input</type>
+                        <default_value>1000000000</default_value>
+                    </item>
+                    <item id="ym_shipping_volumetric_rate">
+                        <name>Volumetric Rate</name>
+                        <type>input</type>
+                        <default_value>2.5</default_value>
+                    </item>
+                    <item id="ym_shipping_tax_rate">
+                        <name>Shipping Tax (%)</name>
+                        <type>input</type>
+                        <default_value>12</default_value>
+                    </item>
+                    <item id="ym_shipping_subtract_standard_shipping_distance">
+                        <name>Subtract Standard Shipping Distance</name>
+                        <type>checkbox</type>
+                    </item>
+
+                </items>
+            </section>
+        </sections>
+    </settings>
+</addon>
