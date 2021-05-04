@@ -238,6 +238,7 @@ function ymShippingBtnDeliveryClick(){
 
 let ymShippingRateAreasCache = {};
 let ymShippingCustomerDataCache = {};
+let ymShippingStatesCache = {};
 //fetch saved shipping rates and put them on the page
 $( document ).ready(function() {
 
