@@ -177,10 +177,12 @@ function fetchCustomerData(){
         $('#litecheckout_place_order').on("click",function(e) {
             if(!is_ym_shipping_customer_data_saved){
                 e.preventDefault(); // cancel the actual submit
+                $('#lblConfirm').css('color', 'red');
                 alert("Please update your shipping information");
             }
             if(!is_shipping_info_confirmed) {
                 e.preventDefault(); // cancel the actual submit
+                $('#lblConfirm').css('color', 'red');
                 alert("Please confirm that your shipping information is correct");
             }
             else{
@@ -194,10 +196,12 @@ function fetchCustomerData(){
         $('#litecheckout_place_order').on("click",function(e) {
             if(!is_ym_shipping_customer_data_saved){
                 e.preventDefault(); // cancel the actual submit
+                $('#lblConfirm').css('color', 'red');
                 alert("Please update your shipping information");
             }
             if(!is_shipping_info_confirmed) {
                 e.preventDefault(); // cancel the actual submit
+                $('#lblConfirm').css('color', 'red');
                 alert("Please confirm that your shipping information is correct");
             }
             else{

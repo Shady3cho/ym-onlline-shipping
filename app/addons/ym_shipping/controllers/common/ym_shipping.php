@@ -75,9 +75,15 @@ function getOrderShippingData($orderId){
        'id' => $order_data[0]['pickup_location_id']
    );
     $order_pickUpLoc = db_get_array('SELECT * FROM ?:ym_shipping_pick_up_location_data where ?w', $selectDataOrderDat);
-  
+
+    $shipping_method = db_get_array('SELECT * FROM ?:destination_descriptions,?:ym_shipping_store_locations where ?:destination_descriptions.destination_id = ?:ym_shipping_store_locations.shipping_rate_id and ?:ym_shipping_store_locations.shipping_rate_id='.$order_data[0]['rate_area_id'], array());
+
+    $distance = ymShippingCalculateDistance($order_data[0]["latitude"], $order_data[0]["longitude"],$shipping_method[0]["latitude"], $shipping_method[0]["longitude"]);
+
     Registry::get('ajax')->assign('order_data', $order_data);
     Registry::get('ajax')->assign('order_pickup_data', $order_pickUpLoc);
+    Registry::get('ajax')->assign('shipping_method', $shipping_method);
+    Registry::get('ajax')->assign('distance', $distance);
 }
 
 //stores or updates the shipping method store locations

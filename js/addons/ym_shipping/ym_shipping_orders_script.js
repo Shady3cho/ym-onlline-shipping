@@ -52,19 +52,26 @@ $( document ).ready(function() {
         hidden:true,
         data: d,
         callback: function(data){
-
             if(data['order_data'].length > 0) {
                let order_data = data['order_data'][0]
                 let order_pickup_data = data['order_pickup_data'][0];
-                $('#lblLatitude').text('Latitude : ' + order_data['latitude']);
-                $('#lblLongitude').text('Longitude : ' + order_data['longitude']);
+               let shipping_data = data["shipping_method"][0];
+                $('#lblLatitude').text(order_data['latitude']);
+                $('#lblLongitude').text(order_data['longitude']);
+
+                $('#lblOriginLongitude').text(shipping_data['longitude']);
+                $('#lblOriginLatitude').text(shipping_data['latitude']);
+
+                $('#lblSelectedState').text(shipping_data['destination']);
+                $('#lblComputedDistance').text(data['distance']);
+
                 if(order_data['is_pickup_from_location'] > 0){
-                    $('#lblPickUpFromLocation').text('Pickup From Store : Yes');
+                    $('#lblPickUpFromLocation').text('Yes');
                 }else {
-                    $('#lblPickUpFromLocation').text('Pickup From Store : No');
+                    $('#lblPickUpFromLocation').text('No');
                     $('#lblPickupLocation').css('display','none');
                 }
-                $('#lblPickupLocation').text('Pickup Location : ' + order_pickup_data['pickup_name'] + '(' + order_pickup_data['city'] + ')');
+                $('#lblPickupLocation').text(order_pickup_data['pickup_name'] + '(' + order_pickup_data['city'] + ')');
 
                 var panPoint = { lat: parseFloat(order_data['latitude']), lng: parseFloat(order_data['longitude']) };
                 map.setCenter(panPoint)
